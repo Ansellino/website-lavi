@@ -22,8 +22,9 @@ return [
     'super_admin' => [
         'enabled' => true,
         'name' => 'super_admin',
-        'define_via_gate' => false,
-        'intercept_gate' => 'before', // after
+        'password' => env('FILAMENT_SHIELD_SUPER_ADMIN_PASSWORD', 'password'),  // Consider setting a default
+        'guard' => 'web',  // Or your authentication guard
+        'register_page_enabled' => false, //change to false if you don't want to have register page/ after
     ],
 
     'panel_user' => [
