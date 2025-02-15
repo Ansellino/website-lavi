@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use App\Filament\Resources\PostResource;
 use App\Filament\Resources\UserResource;
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -70,10 +71,6 @@ class AdminPanelProvider extends PanelProvider
                 Widgets\FilamentInfoWidget::class,
                 \App\Filament\Widgets\PostOverview::class, // Make sure this is here
                 \App\Filament\Widgets\LatestPosts::class,  // Make sure this is here
-            ])
-            ->plugins([
-                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
             ]);
-
     }
 }

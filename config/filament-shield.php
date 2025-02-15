@@ -24,7 +24,12 @@ return [
         'name' => 'super_admin',
         'password' => env('FILAMENT_SHIELD_SUPER_ADMIN_PASSWORD', 'password'),  // Consider setting a default
         'guard' => 'web',  // Or your authentication guard
-        'register_page_enabled' => false, //change to false if you don't want to have register page/ after
+        'register_page_enabled' => true, //change to false if you don't want to have register page/ after
+    ],
+
+    'filament_user' => [
+        'enabled' => true,
+        'name' => 'filament_user', //Role name for filament user
     ],
 
     'panel_user' => [

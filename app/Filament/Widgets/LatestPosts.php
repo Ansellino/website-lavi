@@ -5,6 +5,7 @@ namespace App\Filament\Widgets;
 use App\Filament\Resources\PostResource;
 use App\Models\Post;
 use Filament\Tables;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 
@@ -20,8 +21,10 @@ class LatestPosts extends BaseWidget
             ->columns([
                 Tables\Columns\TextColumn::make('title'),
                 Tables\Columns\TextColumn::make('user.name'),
+                SpatieMediaLibraryImageColumn::make('image') // Use a descriptive name
+                ->collection('post-images'), // *MUST* match your collection name
                 Tables\Columns\TextColumn::make('created_at')->dateTime(),
-            ])
+                ])
             ->paginated(false);
     }
 }

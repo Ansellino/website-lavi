@@ -2,62 +2,50 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
-use Filament\Tables\Columns\Layout\Panel;
+// use Illuminate\Contracts\Auth\MustVerifyEmail; // If you're using email verification
+use Filament\Models\Contracts\FilamentUser; // Import
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Traits\HasRoles; // Import
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser // Implement
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles; // Use the trait
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
     protected $fillable = [
         'name',
         'email',
         'password',
-        'is_admin',
+        'is_admin', // Ensure 'is_admin' is fillable
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+        'is_admin' => 'boolean', // Cast to boolean
+    ];
+
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->hasRole('super_admin') || $this->is_admin; // Check for super_admin role OR is_admin
+         return $this->hasRole('super_admin') || $this->is_admin;
     }
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    // Optional: If you also want to give super admins access to *everything*
+    // even without specific permissions, you can override the hasPermissionTo method:
 
-    public function posts(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function hasPermissionTo($permission, $guardName = null): bool
     {
-        return $this->hasMany(Post::class);
+        if ($this->hasRole('super_admin')) {
+            return true; // Super admins bypass permission checks
+        }
+        return parent::hasPermissionTo($permission, $guardName);
     }
 }
