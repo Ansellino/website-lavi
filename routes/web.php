@@ -13,4 +13,6 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
 require __DIR__.'/auth.php';

@@ -42,7 +42,7 @@ class PostResource extends Resource
                     ->numeric()
                     ->required(),
                 FileUpload::make('image')
-                    ->label('Image')
+                    ->label('Images')
                     ->directory('Images')
                     ->nullable(),
             ]);
