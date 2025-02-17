@@ -2,28 +2,23 @@
 
 namespace Database\Factories;
 
+use App\Models\Category; // Import your Category model
 use App\Models\Post;
-use App\Models\User;
+use App\Models\User; // Import your User model
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
- */
 class PostFactory extends Factory
 {
-    protected $model = Post::class;
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
+        $title = $this->faker->sentence(rand(3, 6)); // Generate a sentence for the title
         return [
-            'title' => $this->faker->sentence,
-            'content' => $this->faker->paragraphs(3, true),
-            'user_id' => User::factory(), // Create a user for each post
-            'image' => $this->faker->imageUrl(), // Add an image to each post
+            'title' => $title,
+            'slug' => Str::slug($title), // Generate slug from title
+            'content' => $this->faker->paragraph(rand(5, 10)), // Generate a paragraph for content
+            'user_id' => User::inRandomOrder()->first()->id, // Assign a random user (author)
+            // You can also use $this->faker->text() for longer, unstructured tag strings.
         ];
     }
 }

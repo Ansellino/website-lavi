@@ -4,81 +4,56 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
 use App\Models\Post;
+use App\Models\User; // Import the User model
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form; // Import the Form class
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Table;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Filament\Infolists\Components\SpatieMediaLibraryImageEntry;
-use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Infolist;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table; // Import the Table class
+use Illuminate\Support\Str;
 
 class PostResource extends Resource
 {
-    protected static ?string $model = Post::class;
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static?string $model = Post::class;
 
-    public static function form(Form $form): Form
+    protected static?string $navigationIcon = 'heroicon-o-document-text';
+
+    public static function form(Form $form): Form // Use Form $form type hint
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
+                TextInput::make('title')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\RichEditor::make('content')
-                    ->required()
-                    ->columnSpanFull(),
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
+                    ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))),
+                TextInput::make('slug')
+                    ->disabled(),
+                MarkdownEditor::make('content')
                     ->required(),
-                SpatieMediaLibraryFileUpload::make('post_images')
-                    ->collection('post_images')
-                    ->multiple()
-                    ->maxFiles(5)
-                    ->minFiles(1)
-                    ->maxSize(5120) // 5MB
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
-                    ->imageEditor()
-                    ->imageEditorMode(2)
-                    ->imageCropAspectRatio('16:9')
-                    ->imageResizeTargetWidth('1920')
-                    ->imageResizeTargetHeight('1080')
-                    ->reorderable()
-                    ->columnSpanFull()
-                    ->required(),
+                Select::make('user_id')
+                    ->label('Author')
+                    ->relationship('author', 'name')
+                    ->nullable(),
             ]);
     }
 
-    public static function table(Table $table): Table
+    public static function table(Table $table): Table // Use Table $table type hint
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')
-                    ->searchable()
-                    ->sortable()
-                    ->wrap(),
-                SpatieMediaLibraryImageColumn::make('post_images')
-                    ->collection('post_images')
-                    ->circular()
-                    ->stacked()
-                    ->limit(3)
-                    ->width(200)
-                    ->height(200),
-                Tables\Columns\TextColumn::make('user.name')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(),
+                TextColumn::make('title')->searchable(),
+                TextColumn::make('slug'),
+                TextColumn::make('author.name')->label('Author'),
+                TextColumn::make('created_at')->dateTime()->sortable(), // Added created_at
+                TextColumn::make('updated_at')->dateTime()->sortable(), // Added updated_at
             ])
-            ->defaultSort('created_at', 'desc')
             ->filters([
-                // Add filters if needed
+                //... any filters you need
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
@@ -89,25 +64,11 @@ class PostResource extends Resource
             ]);
     }
 
-    public static function infolist(Infolist $infolist): Infolist
+    public static function getRelations(): array
     {
-        return $infolist
-            ->schema([
-                TextEntry::make('title')
-                    ->size(TextEntry\TextEntrySize::Large),
-                TextEntry::make('user.name')
-                    ->label('Author'),
-                SpatieMediaLibraryImageEntry::make('post_images')
-                    ->collection('post_images')
-                    ->width(800)
-                    ->height(600)
-                    ->slideshowInterval('3s'),
-                TextEntry::make('content')
-                    ->html()
-                    ->columnSpanFull(),
-                TextEntry::make('created_at')
-                    ->dateTime(),
-            ]);
+        return [
+            //... any relation managers you might have
+        ];
     }
 
     public static function getPages(): array
@@ -117,10 +78,5 @@ class PostResource extends Resource
             'create' => Pages\CreatePost::route('/create'),
             'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
-    }
-
-    public static function getRecordUrl($record): string
-    {
-        return route('posts.show', $record);
     }
 }

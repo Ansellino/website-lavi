@@ -5,54 +5,35 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\Image\Enums\Fit;
-use Spatie\MediaLibrary\MediaCollections\File;
+use Illuminate\Support\Str;
 
-class Post extends Model implements HasMedia
+class Post extends Model
 {
-    use HasFactory, InteractsWithMedia;
+    use HasFactory;
 
     protected $fillable = [
         'title',
+        'slug',
         'content',
-        'user_id',
+        'user_id', // If you are keeping user_id
+        'tags', // The single text field for "tags"
     ];
 
-    public function user(): BelongsTo
+    public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function registerMediaCollections(): void
+    protected static function boot()
     {
-        $this
-            ->addMediaCollection('post_images')
-            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp'])
-            ->withResponsiveImages();
-    }
+        parent::boot();
 
-    public function registerMediaConversions(?Media $media = null): void
-    {
-        $this
-            ->addMediaConversion('thumb')
-            ->fit(Fit::Contain, 300, 300)
-            ->optimize()
-            ->performOnCollections('post_images');
+        static::creating(function ($post) {
+            $post->slug = Str::slug($post->title);
+        });
 
-        $this
-            ->addMediaConversion('preview')
-            ->fit(Fit::Contain, 800, 800)
-            ->optimize()
-            ->performOnCollections('post_images');
-
-        $this
-            ->addMediaConversion('responsive')
-            ->fit(Fit::Contain, 1200, 1200)
-            ->optimize()
-            ->withResponsiveImages()
-            ->performOnCollections('post_images');
+        static::updating(function ($post) {
+            $post->slug = Str::slug($post->title);
+        });
     }
 }
