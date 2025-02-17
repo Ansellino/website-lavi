@@ -2,102 +2,140 @@
     <div class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
         <div class="py-8 sm:py-12">
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                {{-- Responsive Header Section --}}
-                <div class="mb-8 text-center sm:mb-12">
-                    <h1 class="mb-3 text-3xl font-bold text-gray-900 sm:mb-4 sm:text-4xl lg:text-5xl">
-                        Latest Collection
-                    </h1>
-                    <p class="max-w-2xl px-4 mx-auto text-base text-gray-600 sm:text-lg">
-                        Discover our newest collection of premium footwear
-                    </p>
+                <!-- Page Header -->
+                <div class="mb-8">
+                    <h1 class="text-3xl font-bold text-gray-900">Our Products</h1>
+                    <p class="mt-2 text-sm text-gray-600">Showing {{ $posts->firstItem() }} to {{ $posts->lastItem() }} of {{ $posts->total() }} products</p>
                 </div>
 
-                {{-- Responsive Products Grid --}}
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 lg:gap-8">
-                    @foreach($posts as $post)
-                        <div class="flex flex-col h-full transition-all duration-300 bg-white border border-gray-100 shadow-sm group rounded-xl sm:rounded-2xl hover:shadow-xl">
-                            {{-- Responsive Image Container --}}
-                            <a href="{{ route('posts.show', $post) }}" class="relative block h-[200px] sm:h-[250px] overflow-hidden rounded-t-xl sm:rounded-t-2xl">
-                                @if($post->image)
-                                    <div class="w-full h-full bg-gray-100">
-                                        <img
-                                            src="{{ asset('storage/'. $post->image) }}"
-                                            alt="{{ $post->title }}"
-                                            class="object-contain w-full h-full transition-transform duration-500 transform group-hover:scale-105"
-                                            loading="lazy"
+                <div class="flex flex-col gap-6 lg:flex-row">
+                    <!-- Filter Sidebar -->
+                    <div class="w-full lg:w-1/4">
+                        <div class="sticky top-6">
+                            <form action="{{ route('posts.index') }}" method="GET" class="p-6 space-y-6 bg-white rounded-lg shadow-sm">
+                                <!-- Search -->
+                                <div class="space-y-2">
+                                    <label for="search" class="text-sm font-medium text-gray-900">Search Products</label>
+                                    <div class="relative">
+                                        <input
+                                            type="text"
+                                            name="search"
+                                            value="{{ request('search') }}"
+                                            class="w-full py-2 pl-10 pr-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                            placeholder="Search by name..."
                                         >
-                                    </div>
-                                    {{-- Responsive Tag --}}
-                                    <div class="absolute top-3 sm:top-4 right-3 sm:right-4">
-                                        <span class="px-2.5 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-full shadow-lg">
-                                            New Arrival
+                                        <span class="absolute left-3 top-2.5 text-gray-400">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                            </svg>
                                         </span>
                                     </div>
+                                </div>
+
+                                <!-- Price Range -->
+                                <div class="space-y-2">
+                                    <label class="text-sm font-medium text-gray-900">Price Range</label>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <input
+                                                type="number"
+                                                name="min_price"
+                                                value="{{ request('min_price') }}"
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                placeholder="Min"
+                                            >
+                                        </div>
+                                        <div>
+                                            <input
+                                                type="number"
+                                                name="max_price"
+                                                value="{{ request('max_price') }}"
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                placeholder="Max"
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Sort -->
+                                <div class="space-y-2">
+                                    <label class="text-sm font-medium text-gray-900">Sort By</label>
+                                    <select
+                                        name="sort"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    >
+                                        <option value="">Select sorting</option>
+                                        <option value="price_asc" {{ request('sort') === 'price_asc' ? 'selected' : '' }}>Price: Low to High</option>
+                                        <option value="price_desc" {{ request('sort') === 'price_desc' ? 'selected' : '' }}>Price: High to Low</option>
+                                        <option value="latest" {{ request('sort') === 'latest' ? 'selected' : '' }}>Newest First</option>
+                                    </select>
+                                </div>
+
+                                <!-- Action Buttons -->
+                                <div class="flex gap-3">
+                                    <button
+                                        type="submit"
+                                        class="flex-1 px-4 py-2 text-sm font-medium text-black bg-blue-600 border-2 border-black rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                                    >
+                                        Apply Filters
+                                    </button>
+                                    <a
+                                        href="{{ route('posts.index') }}"
+                                        class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                                    >
+                                        Reset
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+              <!-- Products Grid -->
+            <div class="flex-1">
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    @forelse($posts as $post)
+                        <article class="relative flex flex-col overflow-hidden transition bg-white border border-gray-200 rounded-lg shadow-sm group hover:shadow-md">
+                            <a href="{{ route('posts.show', $post) }}" class="relative block h-[200px] sm:h-[250px] overflow-hidden">
+                                @if($post->image)
+                                    <img
+                                        src="{{ asset('storage/'. $post->image) }}"
+                                        alt="{{ $post->title }}"
+                                        class="object-cover object-center w-full h-full transition duration-300 group-hover:scale-105"
+                                        loading="lazy"
+                                    >
                                 @endif
                             </a>
 
-                            {{-- Responsive Content Container --}}
-                            <div class="flex flex-col flex-grow p-4 sm:p-6">
-                                {{-- Title --}}
-                                <a href="{{ route('posts.show', $post) }}" class="block group">
-                                    <h2 class="mb-2 text-lg font-bold text-gray-900 transition-colors sm:mb-3 sm:text-xl group-hover:text-blue-600 line-clamp-2">
+                            <div class="flex flex-col flex-1 p-4">
+                                <h3 class="mb-2 text-lg font-semibold text-gray-900">
+                                    <a href="{{ route('posts.show', $post) }}" class="hover:text-blue-600">
                                         {{ $post->title }}
-                                    </h2>
-                                </a>
-
-                                {{-- Price --}}
-                                @if($post->price)
-                                    <div class="flex items-baseline mb-3 sm:mb-4">
-                                        <span class="text-xl font-bold text-blue-600 sm:text-2xl">
-                                            Rp {{ number_format($post->price, 0, ',', '.') }}
-                                        </span>
-                                        <span class="ml-2 text-xs text-gray-500 sm:text-sm">/pair</span>
-                                    </div>
-                                @endif
-
-                                {{-- Description --}}
-                                <p class="mb-4 text-xs text-gray-600 sm:text-sm line-clamp-2">
-                                    {{ Str::limit(strip_tags($post->content), 120) }}
-                                </p>
-
-                                {{-- Meta Info --}}
-                                <div class="flex flex-wrap items-center justify-between gap-2 mb-4 text-xs text-gray-500">
-                                    <div class="flex items-center">
-                                        <svg class="w-3.5 sm:w-4 h-3.5 sm:h-4 mr-1.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                        </svg>
-                                        <span>{{ $post->author?->name?? 'Unknown Author' }}</span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <svg class="w-3.5 sm:w-4 h-3.5 sm:h-4 mr-1.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                        </svg>
-                                        <span>{{ $post->created_at->format('M j, Y') }}</span>
-                                    </div>
-                                </div>
-
-                                {{-- Action Button --}}
-                                <div class="pt-3 mt-auto border-t border-gray-100 sm:pt-4">
-                                    <a href="{{ route('posts.show', $post) }}"
-                                        class="inline-flex items-center justify-center w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white transition-all duration-200 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg hover:from-blue-700 hover:to-blue-800 hover:shadow-lg hover:-translate-y-0.5">
-                                        View Details
-                                        <svg class="w-3.5 sm:w-4 h-3.5 sm:h-4 ml-2 -mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                        </svg>
                                     </a>
-                                </div>
+                                </h3>
+
+                                @if($post->price)
+                                    <p class="mb-4 text-xl font-bold text-blue-600">
+                                        Rp {{ number_format($post->price, 0, ',', '.') }}
+                                    </p>
+                                @endif
                             </div>
+                        </article>
+                    @empty
+                        <div class="py-12 text-center col-span-full">
+                            <h3 class="text-lg font-medium text-gray-900">No products found</h3>
+                            <p class="mt-2 text-sm text-gray-600">Try adjusting your search or filter to find what you're looking for.</p>
                         </div>
-                    @endforeach
+                    @endforelse
                 </div>
 
-                {{-- Responsive Pagination --}}
+                <!-- Pagination -->
                 @if($posts->hasPages())
-                    <div class="mt-8 sm:mt-12">
-                        {{ $posts->links() }}
+                    <div class="mt-8">
+                        {{ $posts->withQueryString()->links() }}
                     </div>
                 @endif
             </div>
+        </div>
         </div>
     </div>
 </x-app-layout>
