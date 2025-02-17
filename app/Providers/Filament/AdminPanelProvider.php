@@ -70,7 +70,6 @@ class AdminPanelProvider extends PanelProvider
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
                 \App\Filament\Widgets\PostOverview::class, // Make sure this is here
-                \App\Filament\Widgets\LatestPosts::class,  // Make sure this is here
             ]);
     }
 }

@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('content');
+            $table->string('image')->nullable();
             $table->foreignId(column: 'user_id')->nullable()->constrained()->onDelete('cascade');
             $table->integer('price')->nullable();
             $table->timestamps();

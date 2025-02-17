@@ -15,9 +15,9 @@ class Post extends Model
         'title',
         'slug',
         'content',
-        'user_id', // If you are keeping user_id
-        'tags', // The single text field for "tags"
+        'user_id', // If you are keeping user_id // The single text field for "tags"
         'price', // The single text field for "price"
+        'image',
     ];
 
     public function author(): BelongsTo

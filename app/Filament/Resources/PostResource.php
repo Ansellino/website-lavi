@@ -6,6 +6,7 @@ use App\Filament\Resources\PostResource\Pages;
 use App\Models\Post;
 use App\Models\User; // Import the User model
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -40,6 +41,10 @@ class PostResource extends Resource
                 TextInput::make('price')
                     ->numeric()
                     ->required(),
+                FileUpload::make('image')
+                    ->label('Image')
+                    ->directory('Images')
+                    ->nullable(),
             ]);
     }
 
