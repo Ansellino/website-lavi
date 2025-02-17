@@ -18,7 +18,7 @@ class PostFactory extends Factory
             'slug' => Str::slug($title), // Generate slug from title
             'content' => $this->faker->paragraph(rand(5, 10)), // Generate a paragraph for content
             'user_id' => User::inRandomOrder()->first()->id, // Assign a random user (author)
-            // You can also use $this->faker->text() for longer, unstructured tag strings.
+            'price' => $this->faker->randomFloat(2, 0, 1000), // Generate a random price
         ];
     }
 }

@@ -37,6 +37,9 @@ class PostResource extends Resource
                     ->label('Author')
                     ->relationship('author', 'name')
                     ->nullable(),
+                TextInput::make('price')
+                    ->numeric()
+                    ->required(),
             ]);
     }
 
@@ -44,11 +47,20 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')->searchable(),
+                TextColumn::make('title')
+                    ->searchable(),
                 TextColumn::make('slug'),
-                TextColumn::make('author.name')->label('Author'),
-                TextColumn::make('created_at')->dateTime()->sortable(), // Added created_at
-                TextColumn::make('updated_at')->dateTime()->sortable(), // Added updated_at
+                TextColumn::make('author.name')
+                    ->label('Author'),
+                TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable(), // Added created_at
+                TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable(), // Added updated_at
+                TextColumn::make('price')
+                    ->formatStateUsing(fn ($state) => 'Rp. '. number_format($state, 0, ',', '.')) // Format as IDR
+                    ->sortable(),
             ])
             ->filters([
                 //... any filters you need

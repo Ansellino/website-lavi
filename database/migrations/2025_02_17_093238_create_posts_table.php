@@ -13,8 +13,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('content');
-            $table->foreignId(column: 'user_id')->nullable()->constrained()->onDelete('cascade'); // Optional user_id
-            $table->text('tags')->nullable(); // The "tags" text field
+            $table->foreignId(column: 'user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->integer('price')->nullable();
             $table->timestamps();
         });
     }
