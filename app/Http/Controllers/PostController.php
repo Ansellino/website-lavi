@@ -63,4 +63,5 @@ class PostController extends Controller
             return back()->withErrors(['error' => 'Product not found.']);
         }
     }
+
 }
