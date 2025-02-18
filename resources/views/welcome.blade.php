@@ -19,9 +19,9 @@
                 <div class="flex items-center justify-between h-20">
                     <!-- Logo Section -->
                     <div class="flex items-center space-x-3">
-                        <h1 class="text-2xl font-bold text-Black bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                            <x-application-logo class="h-max w-max" />
-                        </h1>
+                        <a href="/" wire:navigate>
+                            <x-application-logo class="text-gray-500 fill-current h-max w-max" />
+                        </a>
                     </div>
 
                     <!-- Navigation Links -->

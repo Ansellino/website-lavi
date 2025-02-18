@@ -44,8 +44,8 @@
                                 {{-- Title and Badge --}}
                                 <div class="mb-6">
                                     <div class="flex items-center justify-between">
-                                        <h1 class="text-3xl font-bold text-gray-900"><strong>{{ $post->title }}</strong></h1>
-                                        <span class="px-4 py-1.5 text-sm font-black text-gray-900 bg-gray-100 rounded-full shadow-sm uppercase">
+                                        <h1 class="text-2xl font-bold text-gray-900"><strong>{{ $post->title }}</strong></h1>
+                                        <span class="px-4 py-1.5 text-sm font-black text-gray-900 bg-gray-100 rounded-full shadow-sm uppercase whitespace-nowrap">
                                             <strong>New Arrival</strong>
                                         </span>
                                     </div>
@@ -55,7 +55,7 @@
                                 @if ($post->price)
                                     <div class="mb-6">
                                         <div class="flex items-baseline space-x-2">
-                                            <span class="text-xl font-bold text-gray-900">
+                                            <span class="text-3xl font-bold text-gray-900">
                                                 Rp {{ number_format($post->price, 0, ',', '.') }}
                                             </span>
                                         </div>
@@ -63,20 +63,20 @@
                                 @endif
 
                                 {{-- Description with Black Text --}}
-                                <div class="mb-8 prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700">
+                                <div class="mb-8 prose prose-lg text-justify max-w-none prose-headings:text-gray-900 prose-p:text-gray-700">
                                     {!! $post->content !!}
                                 </div>
 
                                 {{-- Author and Date Info --}}
-                                <div class="flex items-center mb-8 space-x-6 text-sm">
-                                    <div class="flex items-center px-3 py-2 rounded-lg bg-gray-50">
-                                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div class="flex items-center justify-between mb-8">
+                                    <div class="flex items-center px-4 py-3 rounded-lg bg-gray-50">
+                                        <svg class="w-5 h-5 mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                         </svg>
                                         <span class="text-gray-900">By {{ $post->author?->name ?? 'Unknown Author' }}</span>
                                     </div>
-                                    <div class="flex items-center px-3 py-2 rounded-lg bg-gray-50">
-                                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <div class="flex items-center px-4 py-3 rounded-lg bg-gray-50">
+                                        <svg class="w-5 h-5 mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                         </svg>
                                         <span class="text-gray-900">{{ $post->created_at->format('F j, Y') }}</span>
