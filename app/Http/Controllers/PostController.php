@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
@@ -13,7 +14,7 @@ class PostController extends Controller
     public function index(Request $request)
     {
         try {
-            $query = Post::query();
+            $query = Post::withCount('favoritedBy');
 
             // Search with validation
             if ($request->filled('search')) {
@@ -42,6 +43,10 @@ class PostController extends Controller
                     default => $query->latest() // Default sorting
                 };
             });
+            
+            $posts = Post::withCount('favoritedBy')
+                ->latest()
+                ->paginate(12);
 
             // Use proper pagination with query string
             $posts = $query->paginate(9)->appends($request->query());
@@ -64,4 +69,30 @@ class PostController extends Controller
         }
     }
 
+    public function toggleFavorite(Post $post)
+    {
+        try {
+            $user = Auth::user();
+
+            if (!$user) {
+                return response()->json(['error' => 'Unauthenticated'], 401);
+            }
+
+            if ($post->isFavoritedBy($user)) {
+                $post->unfavorite($user);
+                $isFavorited = false;
+            } else {
+                $post->favorite($user);
+                $isFavorited = true;
+            }
+
+            return response()->json([
+                'success' => true,
+                'isFavorited' => $isFavorited,
+                'count' => $post->favoritedBy()->count()
+            ]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to toggle favorite'], 500);
+        }
+    }
 }

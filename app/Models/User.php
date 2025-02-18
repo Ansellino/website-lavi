@@ -6,6 +6,7 @@ namespace App\Models;
 use Filament\Models\Contracts\FilamentUser; // Import
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -33,6 +34,10 @@ class User extends Authenticatable implements FilamentUser // Implement
         'is_admin' => 'boolean', // Cast to boolean
     ];
 
+    public function favorites(): BelongsToMany
+    {
+        return $this->belongsToMany(Post::class, 'favorites')->withTimestamps();
+    }
     public function canAccessPanel(Panel $panel): bool
     {
          return $this->hasRole('super_admin') || $this->is_admin;
