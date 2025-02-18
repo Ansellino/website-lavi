@@ -24,7 +24,7 @@
                                             class="w-full py-2 pl-10 pr-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                             placeholder="Search by name..."
                                         >
-                                        
+
                                     </div>
                                 </div>
 
@@ -86,7 +86,7 @@
                         </div>
                     </div>
             </div>
-        
+
                         <!-- Products Grid Section -->
             <div class="flex-1 mt-4">
                 <!-- Grid Header -->
@@ -104,9 +104,9 @@
                             <!-- Product Image -->
                             <a href="{{ route('posts.show', $post) }}" class="relative block overflow-hidden aspect-w-4 aspect-h-3">
                                 @if($post->image)
-                                    <img 
-                                        src="{{ asset('storage/'. $post->image) }}" 
-                                        alt="{{ $post->title }}" 
+                                    <img
+                                        src="{{ asset('storage/'. $post->image) }}"
+                                        alt="{{ $post->title }}"
                                         class="object-cover w-full h-full transition-transform duration-300 transform group-hover:scale-110"
                                         loading="lazy"
                                     >
