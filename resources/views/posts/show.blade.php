@@ -28,9 +28,9 @@
                             @if ($post->image)
                                 <div class="relative max-w-md mx-auto group">
                                     <div class="overflow-hidden bg-white aspect-w-4 aspect-h-3 rounded-xl">
-                                        <img 
-                                            src="{{ asset('storage/'. $post->image) }}" 
-                                            alt="{{ $post->title }}" 
+                                        <img
+                                            src="{{ asset('storage/'. $post->image) }}"
+                                            alt="{{ $post->title }}"
                                             class="object-contain w-full h-full transition-all duration-500 transform group-hover:scale-105"
                                         >
                                     </div>
@@ -44,9 +44,9 @@
                                 {{-- Title and Badge --}}
                                 <div class="mb-6">
                                     <div class="flex items-center justify-between">
-                                        <h1 class="text-3xl font-bold text-gray-900">{{ $post->title }}</h1>
-                                        <span class="px-4 py-1.5 text-sm font-semibold text-gray-900 bg-gray-100 rounded-full shadow-sm">
-                                            New Arrival
+                                        <h1 class="text-3xl font-bold text-gray-900"><strong>{{ $post->title }}</strong></h1>
+                                        <span class="px-4 py-1.5 text-sm font-black text-gray-900 bg-gray-100 rounded-full shadow-sm uppercase">
+                                            <strong>New Arrival</strong>
                                         </span>
                                     </div>
                                 </div>
@@ -55,7 +55,7 @@
                                 @if ($post->price)
                                     <div class="mb-6">
                                         <div class="flex items-baseline space-x-2">
-                                            <span class="text-4xl font-bold text-gray-900">
+                                            <span class="text-xl font-bold text-gray-900">
                                                 Rp {{ number_format($post->price, 0, ',', '.') }}
                                             </span>
                                         </div>
@@ -85,13 +85,24 @@
 
                                 {{-- Action Button --}}
                                 <div class="flex flex-col mb-8 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-                                    <a href="https://shopee.co.id/claudiofootwear" 
-                                       target="_blank" 
+                                    <a href="https://shopee.co.id/lavioxelshop"
+                                       target="_blank"
                                        class="inline-flex items-center justify-center flex-1 px-8 py-4 text-base font-medium text-black transition-colors duration-200 bg-gray-900 rounded-xl hover:bg-gray-800">
                                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                                         </svg>
                                         Buy on Shopee
+                                    </a>
+                                </div>
+
+                                <div class="flex flex-col mb-8 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+                                    <a href="https://www.tokopedia.com/lavioxelshop"
+                                       target="_blank"
+                                       class="inline-flex items-center justify-center flex-1 px-8 py-4 text-base font-medium text-black transition-colors duration-200 bg-gray-900 rounded-xl hover:bg-gray-800">
+                                        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                        </svg>
+                                        Buy on Tokopedia
                                     </a>
                                 </div>
 

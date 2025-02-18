@@ -24,7 +24,6 @@ Route::view('profile', 'profile')
         // Posts routes
         Route::resource('posts', PostController::class);
     });    
-
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
