@@ -35,7 +35,7 @@
         </main>
 
         <!-- Footer -->
-        <footer class="py-12 bg-white border-t border-gray-200">
+        <footer class="py-12 mt-2 bg-white border-t border-gray-200">
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
                     <!-- About Section -->

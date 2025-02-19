@@ -69,8 +69,8 @@
         <section class="py-20 bg-white">
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="text-center">
-                    <h2 class="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Featured Products</h2>
-                    <p class="mt-4 mb-2 text-lg text-gray-600">Check out our latest collection</p>
+                    <h2 class="mt-6 mb-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Featured Products</h2>
+                    <p class="mt-4 mb-6 text-lg text-gray-600">Check out our latest collection</p>
                 </div>
 
                 <div class="relative mt-12">
@@ -106,7 +106,7 @@
 
         <!-- Enhanced Footer -->
         <footer class="bg-gray-900">
-            <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8">
+            <div class="px-4 py-12 mx-auto mt-3 max-w-7xl sm:px-6 lg:py-16 lg:px-8">
                 <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
                     <div>
                         <h3 class="text-sm font-semibold tracking-wider text-gray-700 uppercase">About Us</h3>
@@ -146,7 +146,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="pt-8 mt-8 border-t border-gray-800">
+                <div class="pt-8 border-t mt-9 border-gray">
                     <p class="text-base text-center text-gray-400">
                         &copy; {{ date('Y') }} Lavioxel Shop. All rights reserved.
                     </p>
