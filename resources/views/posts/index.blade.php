@@ -113,7 +113,7 @@
                                         >
                                         <div class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-black/40 group-hover:opacity-100">
                                             <div class="flex items-center justify-center w-full h-full">
-                                                <span class="px-4 py-2 text-sm font-medium text-black transition-transform duration-300 transform translate-y-2 border-2 border-white rounded-lg group-hover:translate-y-0">
+                                                <span class="px-4 py-2 text-sm font-medium text-black transition-transform duration-300 transform translate-y-2 border-4 border-black rounded-lg shadow-lg group-hover:translate-y-0 hover:shadow-white">
                                                     View Details
                                                 </span>
                                             </div>
@@ -149,7 +149,7 @@
 
                                     <!-- Action Buttons -->
                                     <div class="flex items-center gap-2">
-                                        <a href="{{ route('posts.show', $post) }}" 
+                                        <a href="{{ route('posts.show', $post) }}"
                                         class="flex-1 px-4 py-2.5 text-sm font-medium text-center text-black transition-colors duration-300 bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                                             View Details
                                         </a>
