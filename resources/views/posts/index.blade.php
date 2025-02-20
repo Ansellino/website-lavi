@@ -19,7 +19,7 @@
 
                 <div class="flex flex-col gap-6 lg:flex-row">
                     <!-- Filter Sidebar - Responsive -->
-                    <div class="w-full lg:w-1/4">
+                    <div class="w-full lg:w-full">
                         <!-- Mobile Filter Button -->
                         <button
                             type="button"

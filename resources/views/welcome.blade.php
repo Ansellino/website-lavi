@@ -16,7 +16,7 @@
         <!-- Enhanced Mobile-Friendly Navigation -->
         <nav class="sticky top-0 z-50 border-b border-gray-200 shadow-sm bg-white/95 backdrop-blur-lg">
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16 sm:h-20">
+                <div class="flex items-center justify-between h-16 gap-6 sm:h-20">
                     <!-- Logo Section with increased spacing -->
                     <div class="flex items-center space-x-12">
                         <a href="/" class="flex items-center">
