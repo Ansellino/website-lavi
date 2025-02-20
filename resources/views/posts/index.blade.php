@@ -10,106 +10,106 @@
         <!-- Main Content -->
         <div class="relative z-10 py-8 sm:py-12">
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <!-- Enhanced Page Header with Animation -->
-                <div class="mb-8 animate-fade-in">
-                    <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-                        Our Products
-                    </h1>
-                </div>
+            <!-- Enhanced Page Header with Animation -->
+            <div class="mb-8 animate-fade-in">
+                <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                Our Products
+                </h1>
+            </div>
 
-                <div class="flex flex-col gap-6 lg:flex-row">
-                    <!-- Filter Sidebar - Responsive -->
-                    <div class="w-full lg:w-full">
-                        <!-- Mobile Filter Button -->
-                        <button
-                            type="button"
-                            class="w-full px-4 py-2 mb-4 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg lg:hidden hover:bg-gray-50"
-                            onclick="toggleFilters()"
-                        >
-                            <div class="flex items-center justify-center gap-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
-                                </svg>
-                                Filter Products
+            <div class="flex flex-col gap-6 lg:flex-row">
+                <!-- Filter Sidebar - Responsive -->
+                <div class="w-full lg:w-full">
+                <!-- Filter Button (Visible on all screens) -->
+                <button
+                    type="button"
+                    class="w-full px-4 py-2 mb-4 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50"
+                    onclick="toggleFilters()"
+                >
+                    <div class="flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                    </svg>
+                    <span id="filterButtonText">Show Filters</span>
+                    </div>
+                </button>
+
+                <!-- Filter Form -->
+                <div id="filterForm" class="hidden">
+                    <div class="sticky top-6">
+                    <form action="{{ route('posts.index') }}" method="GET" class="p-4 space-y-4 bg-white rounded-lg shadow-sm sm:p-6 sm:space-y-6">
+                        <!-- Search -->
+                        <div class="space-y-2">
+                        <label for="search" class="text-sm font-medium text-gray-900">Search Products</label>
+                        <div class="relative">
+                            <input
+                            type="text"
+                            name="search"
+                            value="{{ request('search') }}"
+                            class="w-full py-2 pl-4 pr-4 text-sm border border-gray-300 rounded-lg sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            placeholder="Search by name..."
+                            >
+                        </div>
+                        </div>
+
+                        <!-- Price Range -->
+                        <div class="space-y-2">
+                        <label class="text-sm font-medium text-gray-900">Price Range</label>
+                        <div class="grid grid-cols-2 gap-2 sm:gap-4">
+                            <div>
+                            <input
+                                type="number"
+                                name="min_price"
+                                value="{{ request('min_price') }}"
+                                class="w-full px-2 py-1.5 text-sm border border-gray-300 rounded-lg sm:px-3 sm:py-2 sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="Min"
+                            >
                             </div>
-                        </button>
-
-                        <!-- Filter Form - Hidden on mobile by default -->
-                        <div id="filterForm" class="hidden lg:block">
-                            <div class="sticky top-6">
-                                <form action="{{ route('posts.index') }}" method="GET" class="p-4 space-y-4 bg-white rounded-lg shadow-sm sm:p-6 sm:space-y-6">
-                                    <!-- Search -->
-                                    <div class="space-y-2">
-                                        <label for="search" class="text-sm font-medium text-gray-900">Search Products</label>
-                                        <div class="relative">
-                                            <input
-                                                type="text"
-                                                name="search"
-                                                value="{{ request('search') }}"
-                                                class="w-full py-2 pl-4 pr-4 text-sm border border-gray-300 rounded-lg sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                                placeholder="Search by name..."
-                                            >
-                                        </div>
-                                    </div>
-
-                                    <!-- Price Range -->
-                                    <div class="space-y-2">
-                                        <label class="text-sm font-medium text-gray-900">Price Range</label>
-                                        <div class="grid grid-cols-2 gap-2 sm:gap-4">
-                                            <div>
-                                                <input
-                                                    type="number"
-                                                    name="min_price"
-                                                    value="{{ request('min_price') }}"
-                                                    class="w-full px-2 py-1.5 text-sm border border-gray-300 rounded-lg sm:px-3 sm:py-2 sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                                    placeholder="Min"
-                                                >
-                                            </div>
-                                            <div>
-                                                <input
-                                                    type="number"
-                                                    name="max_price"
-                                                    value="{{ request('max_price') }}"
-                                                    class="w-full px-2 py-1.5 text-sm border border-gray-300 rounded-lg sm:px-3 sm:py-2 sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                                    placeholder="Max"
-                                                >
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Sort -->
-                                    <div class="space-y-2">
-                                        <label class="text-sm font-medium text-gray-900">Sort By</label>
-                                        <select
-                                            name="sort"
-                                            class="w-full px-2 py-1.5 text-sm border border-gray-300 rounded-lg sm:px-3 sm:py-2 sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                        >
-                                            <option value="">Select sorting</option>
-                                            <option value="price_asc" {{ request('sort') === 'price_asc' ? 'selected' : '' }}>Price: Low to High</option>
-                                            <option value="price_desc" {{ request('sort') === 'price_desc' ? 'selected' : '' }}>Price: High to Low</option>
-                                            <option value="latest" {{ request('sort') === 'latest' ? 'selected' : '' }}>Newest First</option>
-                                        </select>
-                                    </div>
-
-                                    <!-- Action Buttons -->
-                                    <div class="flex flex-col gap-2 sm:flex-row sm:gap-3">
-                                        <button
-                                            type="submit"
-                                            class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg sm:flex-1 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                                        >
-                                            Apply Filters
-                                        </button>
-                                        <a
-                                            href="{{ route('posts.index') }}"
-                                            class="px-4 py-2 text-sm font-medium text-center text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                                        >
-                                            Reset
-                                        </a>
-                                    </div>
-                                </form>
+                            <div>
+                            <input
+                                type="number"
+                                name="max_price"
+                                value="{{ request('max_price') }}"
+                                class="w-full px-2 py-1.5 text-sm border border-gray-300 rounded-lg sm:px-3 sm:py-2 sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="Max"
+                            >
                             </div>
                         </div>
+                        </div>
+
+                        <!-- Sort -->
+                        <div class="space-y-2">
+                        <label class="text-sm font-medium text-gray-900">Sort By</label>
+                        <select
+                            name="sort"
+                            class="w-full px-2 py-1.5 text-sm border border-gray-300 rounded-lg sm:px-3 sm:py-2 sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        >
+                            <option value="">Select sorting</option>
+                            <option value="price_asc" {{ request('sort') === 'price_asc' ? 'selected' : '' }}>Price: Low to High</option>
+                            <option value="price_desc" {{ request('sort') === 'price_desc' ? 'selected' : '' }}>Price: High to Low</option>
+                            <option value="latest" {{ request('sort') === 'latest' ? 'selected' : '' }}>Newest First</option>
+                        </select>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col gap-2 sm:flex-row sm:gap-3">
+                        <button
+                            type="submit"
+                            class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg sm:flex-1 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        >
+                            Apply Filters
+                        </button>
+                        <a
+                            href="{{ route('posts.index') }}"
+                            class="px-4 py-2 text-sm font-medium text-center text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        >
+                            Reset
+                        </a>
+                        </div>
+                    </form>
                     </div>
+                </div>
+                </div>
             </div>
 
             <script>
