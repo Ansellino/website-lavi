@@ -87,7 +87,7 @@
                                 <div class="flex flex-col mb-8 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
                                     <a href="https://shopee.co.id/lavioxelshop"
                                        target="_blank"
-                                       class="inline-flex items-center justify-center flex-1 px-8 py-4 text-base font-medium text-black transition-colors duration-200 bg-gray-900 rounded-xl hover:bg-gray-800">
+                                       class="inline-flex items-center justify-center flex-1 px-8 py-4 text-base font-medium text-white transition-colors duration-200 bg-gray-900 rounded-xl hover:bg-gray-800">
                                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                                         </svg>
@@ -98,7 +98,7 @@
                                 <div class="flex flex-col mb-8 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
                                     <a href="https://www.tokopedia.com/lavioxelshop"
                                        target="_blank"
-                                       class="inline-flex items-center justify-center flex-1 px-8 py-4 text-base font-medium text-black transition-colors duration-200 bg-gray-900 rounded-xl hover:bg-gray-800">
+                                       class="inline-flex items-center justify-center flex-1 px-8 py-4 text-base font-medium text-white transition-colors duration-200 bg-gray-900 rounded-xl hover:bg-gray-800">
                                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                                         </svg>

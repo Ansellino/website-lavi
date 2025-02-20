@@ -17,7 +17,24 @@ export default {
                 xs: "475px",
                 ...defaultTheme.screens,
             },
+            animation: {
+                float: "float 3s ease-in-out infinite",
+                "fade-in": "fade-in 0.6s ease-out forwards",
+            },
+            boxShadow: {
+                "3xl": "0 35px 60px -15px rgba(0, 0, 0, 0.3)",
+            },
+            transitionProperty: {
+                height: "height",
+                spacing: "margin, padding",
+            },
+            backgroundImage: {
+                "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+            },
+            backdropBlur: {
+                xs: "2px",
+            },
         },
     },
-    plugins: [forms],
+    plugins: [forms, require("@tailwindcss/aspect-ratio")],
 };
