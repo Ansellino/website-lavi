@@ -7,6 +7,13 @@
 
     <title>{{ config('Lavioxel Shop - Skin Care', 'Lavioxel Shop - Skin Care') }}</title>
 
+    <!-- Icon -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -20,8 +27,8 @@
         <livewire:layout.navigation />
 
         <!-- Main Content -->
-        <main class="py-8 sm:py-12">
-            <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <main>
+            <div class="max-screen">
                 <!-- Page Header -->
                 @if (isset($header))
                     <header class="mb-8">

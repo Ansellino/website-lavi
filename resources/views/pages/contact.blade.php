@@ -1,19 +1,14 @@
 <x-app-layout>
-    <div class="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 z-0 hidden max-w-full max-h-screen opacity-40 bg-grid-pattern sm:block"></div>
-        <div class="absolute inset-0 z-0 max-w-full max-h-screen opacity-20 bg-grid-pattern sm:hidden"></div>
-
+    <div class="relative min-h-screen">
         <div class="relative z-10 flex items-center justify-center min-h-screen px-4 py-12">
             <div class="w-full max-w-7xl">
                 <!-- Main Card -->
-                <div class="overflow-hidden transition-all duration-300 transform bg-white shadow-2xl rounded-3xl hover:shadow-3xl">
+                <div class="overflow-hidden transition-all duration-300 transform bg-yellow rounded-3xl hover:shadow-3xl">
                     <!-- Header Section -->
-                    <div class="relative px-6 py-10 overflow-hidden sm:px-12 sm:py-16 bg-gradient-to-r black to-gray">
-                        <div class="absolute inset-0 opacity-20">
-                            <div class="absolute inset-0 bg-[url('/img/grid.svg')] bg-center"></div>
-                        </div>
-                        <h1 class="relative max-w-3xl mx-auto text-3xl font-bold text-center text-black sm:text-4xl">
+                    <div class="relative px-6 py-10 overflow-hidden sm:px-12 sm:py-16">
+                        <div class="absolute inset-0" style="background-image: url('{{ asset('images1/7.png') }}'); background-size: cover; background-position: center; filter: blur(8px); transform: scale(1.1);"></div>
+                        <div class="absolute inset-0 bg-black/30"></div>
+                        <h1 class="relative max-w-3xl mx-auto text-3xl font-bold text-center text-white sm:text-4xl">
                             CONTACT US
                         </h1>
                     </div>

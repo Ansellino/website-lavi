@@ -1,12 +1,6 @@
 <x-app-layout>
     <!-- Enhanced Background with Pattern -->
-    <div class="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
-        <!-- Decorative background elements -->
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 opacity-75 bg-grid-pattern"></div>
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-purple-50/50"></div>
-        </div>
-
+    <div class="relative w-full min-h-screen bg-transparent rounded-lg backdrop-blur-sm">
         <!-- Main Content -->
         <div class="relative z-10 py-8 sm:py-12">
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -23,7 +17,7 @@
                 <!-- Filter Button (Visible on all screens) -->
                 <button
                     type="button"
-                    class="w-full px-4 py-2 mb-4 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50"
+                    class="w-full px-4 py-2 mb-4 text-sm font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50"
                     onclick="toggleFilters()"
                 >
                     <div class="flex items-center justify-center gap-2">
@@ -37,7 +31,7 @@
                 <!-- Filter Form -->
                 <div id="filterForm" class="hidden">
                     <div class="sticky top-6">
-                    <form action="{{ route('posts.index') }}" method="GET" class="p-4 space-y-4 bg-white rounded-lg shadow-sm sm:p-6 sm:space-y-6">
+                    <form action="{{ route('posts.index') }}" method="GET" class="p-4 space-y-4 bg-white border-2 border-gray-300 rounded-lg shadow-sm sm:p-6 sm:space-y-6">
                         <!-- Search -->
                         <div class="space-y-2">
                         <label for="search" class="text-sm font-medium text-gray-900">Search Products</label>
@@ -46,7 +40,7 @@
                             type="text"
                             name="search"
                             value="{{ request('search') }}"
-                            class="w-full py-2 pl-4 pr-4 text-sm border border-gray-300 rounded-lg sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            class="w-full py-2 pl-4 pr-4 text-sm border-2 border-gray-300 rounded-lg sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             placeholder="Search by name..."
                             >
                         </div>
@@ -61,7 +55,7 @@
                                 type="number"
                                 name="min_price"
                                 value="{{ request('min_price') }}"
-                                class="w-full px-2 py-1.5 text-sm border border-gray-300 rounded-lg sm:px-3 sm:py-2 sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                class="w-full px-2 py-1.5 text-sm border-2 border-gray-300 rounded-lg sm:px-3 sm:py-2 sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                 placeholder="Min"
                             >
                             </div>
@@ -70,7 +64,7 @@
                                 type="number"
                                 name="max_price"
                                 value="{{ request('max_price') }}"
-                                class="w-full px-2 py-1.5 text-sm border border-gray-300 rounded-lg sm:px-3 sm:py-2 sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                class="w-full px-2 py-1.5 text-sm border-2 border-gray-300 rounded-lg sm:px-3 sm:py-2 sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                 placeholder="Max"
                             >
                             </div>
@@ -82,7 +76,7 @@
                         <label class="text-sm font-medium text-gray-900">Sort By</label>
                         <select
                             name="sort"
-                            class="w-full px-2 py-1.5 text-sm border border-gray-300 rounded-lg sm:px-3 sm:py-2 sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            class="w-full px-2 py-1.5 text-sm border-2 border-gray-300 rounded-lg sm:px-3 sm:py-2 sm:text-base focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         >
                             <option value="">Select sorting</option>
                             <option value="price_asc" {{ request('sort') === 'price_asc' ? 'selected' : '' }}>Price: Low to High</option>
@@ -95,13 +89,13 @@
                         <div class="flex flex-col gap-2 sm:flex-row sm:gap-3">
                         <button
                             type="submit"
-                            class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg sm:flex-1 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            class="px-4 py-2 text-sm font-medium text-white bg-blue-600 border-2 border-blue-600 rounded-lg sm:flex-1 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                         >
                             Apply Filters
                         </button>
                         <a
                             href="{{ route('posts.index') }}"
-                            class="px-4 py-2 text-sm font-medium text-center text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            class="px-4 py-2 text-sm font-medium text-center text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                         >
                             Reset
                         </a>
@@ -124,7 +118,7 @@
                 <!-- Grid Header -->
                 <div class="flex flex-col gap-2 mb-6 sm:flex-row sm:items-center sm:justify-between">
                     <h2 class="text-2xl font-bold text-gray-900">Available Products</h2>
-                    <div class="px-3 py-1 text-sm text-gray-500 bg-white border rounded-full shadow-sm">
+                    <div class="px-3 py-1 text-sm text-gray-500 bg-white border-2 rounded-full shadow-sm">
                         Showing {{ $posts->firstItem() ?? 0 }} to {{ $posts->lastItem() ?? 0 }} of {{ $posts->total() ?? 0 }} products
                     </div>
                 </div>
@@ -134,15 +128,16 @@
                     @forelse($posts as $post)
                         <!-- Product Card -->
                         <div class="group animate-fade-in" style="animation-delay: {{ $loop->index * 0.1 }}s">
-                            <div class="relative overflow-hidden transition-all duration-300 border border-gray-100 bg-white/90 backdrop-blur-sm rounded-2xl hover:shadow-xl hover:-translate-y-1">
+                            <div class="relative overflow-hidden transition-all duration-300 border-2 border-gray-200 bg-white/90 backdrop-blur-sm rounded-2xl hover:shadow-xl hover:-translate-y-1">
                                 <!-- Product Image -->
+                                <!-- ukuran product 700 px x 700 px -->
                                 <a href="{{ route('posts.show', $post) }}"
                                 class="relative block overflow-hidden aspect-w-1 aspect-h-1 group">
                                     @if($post->image)
-                                        <img src="{{ asset('storage/'. $post->image) }}"
-                                            alt="{{ $post->title }}"
-                                            class="object-cover w-full h-full transition-transform duration-500 transform group-hover:scale-110"
-                                            loading="lazy">
+                                    <img src="{{ asset('storage/'. $post->image) }}"
+                                    alt="{{ $post->title }}"
+                                    class="object-cover w-full transition-transform duration-500 transform group-hover:scale-110"
+                                    loading="lazy">
                                         <!-- Enhanced Overlay -->
                                         <div class="absolute inset-0 transition-all duration-300 opacity-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent group-hover:opacity-100">
                                             <div class="absolute inset-x-0 bottom-0 p-4">
@@ -292,7 +287,7 @@
 
         /* Glass Effect for Cards */
         .glass-effect {
-            @apply backdrop-blur-sm bg-white/80 border border-white/20;
+            @apply backdrop-blur-sm bg-white/80 border-2 border-white/20;
         }
     </style>
 </x-app-layout>
