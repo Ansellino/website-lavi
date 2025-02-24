@@ -28,7 +28,7 @@
 
         <!-- Main Content -->
         <main>
-            <div class="max-screen">
+            <div class="w-auto max-screen">
                 <!-- Page Header -->
                 @if (isset($header))
                     <header class="mb-8">
