@@ -75,7 +75,7 @@
                 img.style.opacity = '0';
                 setTimeout(() => {
                     img.style.opacity = '1';
-                }, 25);
+                }, 100);
             });
         }
 
