@@ -4,7 +4,7 @@
         <!-- Responsive Hero Section -->
         <div class="relative overflow-hidden bg-center bg-no-repeat bg-cover">
             <div class="absolute inset-0">
-            <img src="{{ asset('images1/banner.png') }}" alt="Hero Background" class="object-cover w-full h-full">
+            <img src="{{ asset('images1/banner.svg') }}" alt="Hero Background" class="object-cover w-full h-full">
             <div class="absolute inset-0 bg-black/40"></div>
             </div>
             <div class="relative px-4 py-24 sm:px-6 sm:py-32 lg:py-40 lg:px-8">
@@ -29,7 +29,7 @@
                             @for ($i = 1; $i <= 4; $i++)
                                 <div class="overflow-hidden transition-all duration-500 bg-gray-100 rounded-xl group">
                                     <div class="relative aspect-w-1 aspect-h-1">
-                                        <img src="{{ asset('images1/' . $i . '.png') }}"
+                                        <img src="{{ asset('images1/' . $i . '.svg') }}"
                                              alt="Product {{ $i }}"
                                              class="object-cover w-full h-48 transition-transform duration-300 sm:h-56 group-hover:scale-110"
                                              data-position="{{ $i - 1 }}">
@@ -68,7 +68,7 @@
             const images = slideshow.querySelectorAll('img');
             images.forEach((img, index) => {
                 const imagePosition = positions[index];
-                img.src = `{{ asset('images1/') }}/${imagePosition + 1}.png`;
+                img.src = `{{ asset('images1/') }}/${imagePosition + 1}.svg`;
                 img.alt = `Product ${imagePosition + 1}`;
 
                 // Add fade transition
@@ -97,17 +97,17 @@
             rotateLeft();
         });
 
-        // Auto-advance one image at a time
-        let slideInterval = setInterval(rotateRight, 3000);
+        // Auto-advance one image at a time (increased to 12000ms - 12 seconds)
+        let slideInterval = setInterval(rotateRight, 12000);
 
         // Pause on hover
         slideshow.addEventListener('mouseenter', () => {
             clearInterval(slideInterval);
         });
 
-        // Resume on mouse leave
+        // Resume on mouse leave (also updated to 12000ms)
         slideshow.addEventListener('mouseleave', () => {
-            slideInterval = setInterval(rotateRight, 3000);
+            slideInterval = setInterval(rotateRight, 12000);
         });
 
         // Add fade transition styles
