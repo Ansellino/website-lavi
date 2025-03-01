@@ -30,9 +30,17 @@ export default {
             },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+                "grid-pattern": `linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px),
+                                linear-gradient(to bottom, rgba(0,0,0,0.1) 1px, transparent 1px)`,
             },
-            backdropBlur: {
-                xs: "2px",
+            backgroundSize: {
+                "grid-20": "20px 20px",
+            },
+            keyframes: {
+                float: {
+                    "0%, 100%": { transform: "translateY(0)" },
+                    "50%": { transform: "translateY(-10px)" },
+                },
             },
         },
     },

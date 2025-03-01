@@ -25,7 +25,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $exceptions->renderable(function (AuthorizationException $e, $request) {
             if (Filament::hasPanels() && $request->is(Filament::getCurrentPanel()->getPath() . '/*')) {
-                return response()->view('errors.404' [], 404);
+                return response()->view('errors.404', [], 404);
             }
         });
     })->create();

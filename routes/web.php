@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Pages\Contact;
 
 Route::view('/', 'welcome')->name('home');
 
@@ -32,7 +32,8 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/contact', Contact::class)->name('contact');
 
-Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+//Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 require __DIR__.'/auth.php';
