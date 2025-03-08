@@ -1,10 +1,10 @@
 <!-- Shopee -->
-<a href="https://shopee.co.id/lavioxelshop" 
+<a href="https://shopee.co.id/lavioxelshop"
    target="_blank"
    class="p-6 transition-all duration-300 transform bg-white shadow-md group rounded-2xl hover:shadow-xl hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
     <div class="flex flex-col items-center space-y-4">
         <div class="relative w-20 h-20 overflow-hidden transition-transform duration-300 transform rounded-full group-hover:scale-110">
-            <img src="{{ asset('storage/images/shopee.png') }}"
+            <img src="{{ asset('images1/shopee.webp') }}"
                  alt="Shopee"
                  class="object-cover w-full h-full transition-all duration-300 transform group-hover:scale-105"
                  loading="lazy">
@@ -19,14 +19,14 @@
 </a>
 
 <!-- Tokopedia -->
-<a href="https://www.tokopedia.com/lavioxelshop" 
+<a href="https://www.tokopedia.com/lavioxelshop"
    target="_blank"
    class="p-6 transition-all duration-300 transform bg-white shadow-md group rounded-2xl hover:shadow-xl hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
     <div class="flex flex-col items-center space-y-4">
         <div class="relative w-20 h-20 overflow-hidden transition-transform duration-300 transform rounded-full group-hover:scale-110">
-            <img src="{{ asset('storage/images/tokopedia.png') }}" 
-                 alt="Tokopedia" 
-                 class="object-cover w-full h-full transition-all duration-300 transform group-hover:scale-105" 
+            <img src="{{ asset('images1/tokopedia.webp') }}"
+                 alt="Tokopedia"
+                 class="object-cover w-full h-full transition-all duration-300 transform group-hover:scale-105"
                  loading="lazy">
         </div>
         <div class="space-y-1 text-center">
@@ -37,14 +37,14 @@
 </a>
 
 <!-- TikTok -->
-<a href="https://www.tiktok.com/@lavioxel92" 
+<a href="https://www.tiktok.com/@lavioxel92"
    target="_blank"
    class="p-6 transition-all duration-300 transform bg-white shadow-md group rounded-2xl hover:shadow-xl hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
     <div class="flex flex-col items-center space-y-4">
         <div class="relative w-20 h-20 overflow-hidden transition-transform duration-300 transform rounded-full group-hover:scale-110">
-            <img src="{{ asset('storage/images/tiktok.png') }}" 
-                 alt="TikTok" 
-                 class="object-cover w-full h-full transition-all duration-300 transform group-hover:scale-105" 
+            <img src="{{ asset('images1/tiktok.webp') }}"
+                 alt="TikTok"
+                 class="object-cover w-full h-full transition-all duration-300 transform group-hover:scale-105"
                  loading="lazy">
         </div>
         <div class="space-y-1 text-center">
@@ -55,14 +55,14 @@
 </a>
 
 <!-- YouTube -->
-<a href="https://www.youtube.com/@LAVIOXEL" 
+<a href="https://www.youtube.com/@LAVIOXEL"
    target="_blank"
    class="p-6 transition-all duration-300 transform bg-white shadow-md group rounded-2xl hover:shadow-xl hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
     <div class="flex flex-col items-center space-y-4">
         <div class="relative w-20 h-20 overflow-hidden transition-transform duration-300 transform rounded-full group-hover:scale-110">
-            <img src="{{ asset('storage/images/youtube.webp') }}" 
-                 alt="YouTube" 
-                 class="object-cover w-full h-full transition-all duration-300 transform group-hover:scale-105" 
+            <img src="{{ asset('images1/Youtube.webp') }}"
+                 alt="YouTube"
+                 class="object-cover w-full h-full transition-all duration-300 transform group-hover:scale-105"
                  loading="lazy">
         </div>
         <div class="space-y-1 text-center">
@@ -73,14 +73,14 @@
 </a>
 
 <!-- Instagram -->
-<a href="https://www.instagram.com/lavioxel" 
+<a href="https://www.instagram.com/lavioxel"
    target="_blank"
    class="p-6 transition-all duration-300 transform bg-white shadow-md group rounded-2xl hover:shadow-xl hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
     <div class="flex flex-col items-center space-y-4">
         <div class="relative w-20 h-20 overflow-hidden transition-transform duration-300 transform rounded-full group-hover:scale-110">
-            <img src="{{ asset('storage/images/instagram.webp') }}" 
-                 alt="Instagram" 
-                 class="object-cover w-full h-full transition-all duration-300 transform group-hover:scale-105" 
+            <img src="{{ asset('images1/instagram.webp') }}"
+                 alt="Instagram"
+                 class="object-cover w-full h-full transition-all duration-300 transform group-hover:scale-105"
                  loading="lazy">
         </div>
         <div class="space-y-1 text-center">

@@ -4,7 +4,7 @@
         <!-- Responsive Hero Section -->
         <div class="relative overflow-hidden bg-center bg-no-repeat bg-cover">
             <div class="absolute inset-0">
-            <img src="{{ asset('images1/banner.svg') }}" alt="Hero Background" class="object-cover w-full h-full">
+            <img src="{{ asset('images1/banner.webp') }}" alt="Hero Background" class="object-cover w-full h-full">
             <div class="absolute inset-0 bg-black/40"></div>
             </div>
             <div class="relative px-4 py-24 sm:px-6 sm:py-32 lg:py-40 lg:px-8">
@@ -16,12 +16,32 @@
         </div>
 
         <!-- Replace the product slideshow section -->
-        <section class="py-20 bg-white">
+        <section class="py-24 bg-gray-50">
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div x-data="slideshow"
                      x-init="init()"
                      @resize.window="handleResize">
-
+                    <!-- Our Products Section -->
+                    <div class="mb-12 text-center">
+                        <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Our Products</h2>
+                        <p class="mt-4 text-lg text-gray-600">Discover our curated collection of premium skincare solutions</p>
+                    </div>
+                    <!-- Video Section -->
+                    <div class="max-w-4xl mx-auto mt-12 mb-16 overflow-hidden shadow-2xl rounded-xl max-h-[500px]">
+                        <video
+                            class="w-full h-[500px] object-cover"
+                            controls
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="auto"
+                            poster="{{ asset('images1/banner.webp') }}"
+                        >
+                            <source src="{{ asset('images1/product.mp4') }}" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
                     <!-- Product Slideshow -->
                     <div class="relative mt-12">
                         <div class="max-w-5xl mx-auto overflow-hidden rounded-2xl">
@@ -31,7 +51,7 @@
                                 <template x-for="(position, index) in positions" :key="index">
                                     <div class="overflow-hidden transition-all duration-500 bg-gray-100 rounded-xl group">
                                         <div class="relative aspect-w-1 aspect-h-1">
-                                            <img :src="'/images1/' + (position + 1) + '.svg'"
+                                            <img :src="'/images1/' + (position + 1) + '.webp'"
                                                  :alt="'Product ' + (position + 1)"
                                                  class="object-cover w-full h-48 transition-all duration-300 sm:h-56 group-hover:scale-110"
                                                  x-transition:enter="transition ease-out duration-300"

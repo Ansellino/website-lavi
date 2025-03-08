@@ -10,7 +10,7 @@ new class extends Component {
 }; ?>
 
 <nav x-data="{ open: false }"
-     class="sticky top-0 z-50 py-1 border-b border-gray-200 shadow-sm bg-white/95 backdrop-blur-lg dark:bg-gray-800/95 dark:border-gray-700">
+    class="sticky top-0 z-50 py-1 border-b border-gray-200 shadow-sm bg-gray-100/95 backdrop-blur-lg dark:bg-gray-800/95 dark:border-gray-700">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 gap-6 sm:h-20">
             <!-- Logo Section -->
