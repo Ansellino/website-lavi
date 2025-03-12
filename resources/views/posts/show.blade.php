@@ -45,7 +45,7 @@
                                 <div class="mb-6">
                                     <div class="flex items-center justify-between">
                                         <h1 class="text-2xl font-bold text-gray-900"><strong>{{ $post->title }}</strong></h1>
-                                        <span class="px-4 py-1.5 text-sm font-black text-gray-900 bg-gray-100 rounded-full shadow-sm uppercase whitespace-nowrap">
+                                        <span class="px-4 py-1.5 text-sm font-black text-white bg-green-500 rounded-full shadow-sm uppercase whitespace-nowrap">
                                             <strong>New Arrival</strong>
                                         </span>
                                     </div>
