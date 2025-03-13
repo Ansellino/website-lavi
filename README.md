@@ -1,6 +1,6 @@
 # Project Lavi
 
-![Project Logo](public/images1/banner.webp)
+![Project Logo]![alt text](image.png)
 
 ## Overview
 
@@ -21,16 +21,9 @@ Project Lavi is a Laravel-based web application for showcasing premium skincare 
 
 ## Screenshots
 
-<table>
-  <tr>
-    <td><img src="public/screenshots/home.png" alt="Home Page" width="100%"></td>
-    <td><img src="public/screenshots/products.png" alt="Products Page" width="100%"></td>
-  </tr>
-  <tr>
-    <td><img src="public/screenshots/product-detail.png" alt="Product Detail" width="100%"></td>
-    <td><img src="public/screenshots/admin.png" alt="Admin Dashboard" width="100%"></td>
-  </tr>
-</table>
+Product Page
+![alt text](image-1.png)
+![alt text](image-2.png)
 
 ## Features
 
