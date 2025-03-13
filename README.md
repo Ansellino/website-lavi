@@ -1,6 +1,6 @@
 # Project Lavi
 
-![Project Logo]![alt text](image.png)
+![alt text](image.png)
 
 ## Overview
 
