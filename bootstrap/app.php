@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\PreloadAssets;
 use Filament\Facades\Filament;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Application;
@@ -13,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->web(PreloadAssets::class);
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {

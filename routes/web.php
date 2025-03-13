@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Livewire\Pages\Home;
+use App\Livewire\Pages\Posts;
+use App\Livewire\Pages\PostShow;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Pages\Contact;
 
-Route::view('/', 'welcome')->name('home');
+Route::get('/', Home::class)->name('home');
+//Route::view('/', 'welcome')->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -30,10 +34,14 @@ Route::middleware(['auth'])->group(function () {
         ->name('posts.favorite');
 });
 
-Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
+
+Route::get('/posts', Posts::class)->name('posts.index');
+Route::get('/posts/{post:slug}', PostShow::class)->name('posts.show');
 Route::get('/contact', Contact::class)->name('contact');
 
+//Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+//Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 //Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 require __DIR__.'/auth.php';
